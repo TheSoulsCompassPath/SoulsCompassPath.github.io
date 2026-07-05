@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Quiet Strength Guide — A free interactive healing journal from The Soul's Compass Path. Lessons, affirmation cards, 30-day challenge tracker, and daily journal.">
+<meta property="og:title" content="The Quiet Strength Guide — The Soul's Compass Path">
+<meta property="og:description" content="Rebuild your confidence, protect your peace, and find your way back to yourself.">
+<meta property="og:type" content="website">
+<title>The Quiet Strength Guide · The Soul's Compass Path</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & TOKENS ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --night:      #0E0D0B;
+  --night-mid:  #161410;
+  --ink:        #1A1713;
+  --sand:       #C9B99A;
+  --sand-light: #E8DDD0;
+  --sand-dim:   #A89880;
+  --gold:       #B8952A;
+  --gold-light: #D4A93A;
+  --gold-dim:   rgba(184,149,42,0.35);
+  --muted:      #8A7F70;
+  --border:     rgba(184,149,42,0.18);
+  --surface:    rgba(255,255,255,0.025);
+  --surface-md: rgba(255,255,255,0.04);
+  --r:          3px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--night);
+  color: var(--sand-light);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── UTILITY ────────────────────────────────────────────────── */
+.serif { font-family: 'Cormorant Garamond', serif; }
+.gold  { color: var(--gold); }
+.muted { color: var(--muted); }
+.hide  { display: none !important; }
+
+/* ── NAVIGATION ─────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(14,13,11,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 58px;
+}
+
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.nav-tabs {
+  display: flex; gap: 2px;
+  list-style: none;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  background: none; border: none; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted);
+  padding: 6px 14px; border-radius: 2px;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-tab:hover { color: var(--sand-light); }
+.nav-tab.active {
+  color: var(--gold);
+  background: rgba(184,149,42,0.1);
+}
+
+.nav-compass {
+  font-size: 16px; color: var(--gold-dim);
+  flex-shrink: 0;
+}
+
+/* ── VIEWS ──────────────────────────────────────────────────── */
+.view { display: none; animation: fadeUp 0.35s ease; }
+.view.active { display: block; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── WELCOME ────────────────────────────────────────────────── */
+.hero {
+  padding: 5rem 2rem 3rem;
+  max-width: 680px; margin: 0 auto;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-size: 10px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1.5rem; display: block;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 6vw, 54px);
+  font-weight: 300; line-height: 1.08;
+  color: var(--sand-light);
+  margin-bottom: 1.25rem;
+}
+
+.hero-title em { font-style: italic; color: var(--gold); }
+
+.hero-rule {
+  width: 48px; height: 0.5px;
+  background: var(--gold); opacity: 0.5;
+  margin: 0 auto 1.5rem;
+}
+
+.hero-body {
+  font-size: 14px; line-height: 1.9;
+  color: var(--muted); font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 500;
+  color: var(--night); background: var(--gold);
+  border: none; padding: 13px 30px;
+  border-radius: 2px; cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--gold-light); }
+
+.btn-ghost {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; font-weight: 400;
+  color: var(--sand); background: none;
+  border: 0.5px solid rgba(201,185,154,0.25);
+  padding: 11px 24px; border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  margin-left: 10px;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+.pledge-card {
+  background: rgba(184,149,42,0.04);
+  border: 0.5px solid rgba(184,149,42,0.2);
+  border-radius: var(--r);
+  padding: 2rem 2.25rem;
+  max-width: 520px; margin: 3rem auto 0;
+  text-align: left;
+}
+
+.pledge-label {
+  font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1.25rem; display: block;
+}
+
+.pledge-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-weight: 300; font-style: italic;
+  color: var(--sand-light); line-height: 2.1;
+  border-bottom: 0.5px solid rgba(184,149,42,0.1);
+  padding-bottom: 1px; margin-bottom: 2px;
+}
+.pledge-line:last-child { border-bottom: none; }
+
+.welcome-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px; padding: 2rem;
+  max-width: 720px; margin: 0 auto;
+}
+
+.welcome-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.welcome-card:hover {
+  background: var(--surface-md);
+  border-color: rgba(184,149,42,0.3);
+}
+
+.wc-label {
+  font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.wc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-weight: 300;
+  color: var(--sand-light); margin-bottom: 6px;
+}
+
+.wc-desc {
+  font-size: 11px; color: var(--muted);
+  font-weight: 300; line-height: 1.55;
+}
+
+/* ── LESSONS ────────────────────────────────────────────────── */
+.lessons-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  min-height: calc(100vh - 58px);
+}
+
+.lesson-sidebar {
+  border-right: 0.5px solid var(--border);
+  padding: 2rem 0;
+  position: sticky; top: 58px;
+  height: calc(100vh - 58px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.sidebar-label {
+  font-size: 9px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted);
+  padding: 0 1.5rem; margin-bottom: 1rem; display: block;
+}
+
+.lesson-btn {
+  display: block; width: 100%;
+  background: none; border: none;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  text-align: left;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif; font-size: 12px;
+  line-height: 1.45;
+  transition: all 0.18s;
+}
+.lesson-btn:hover { color: var(--sand-light); background: rgba(255,255,255,0.015); }
+.lesson-btn.active {
+  color: var(--gold);
+  border-left-color: var(--gold);
+  background: rgba(184,149,42,0.06);
+}
+
+.lesson-num {
+  font-size: 10px; color: rgba(184,149,42,0.45);
+  display: block; margin-bottom: 3px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.lesson-content {
+  padding: 3rem;
+  max-width: 640px;
+}
+
+.lesson-eyebrow {
+  font-size: 10px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.lesson-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 300; color: var(--sand-light);
+  line-height: 1.15; margin-bottom: 0.4rem;
+}
+
+.lesson-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-style: italic;
+  color: var(--muted); margin-bottom: 2rem;
+}
+
+.lesson-rule {
+  height: 0.5px; background: var(--border); margin-bottom: 2rem;
+}
+
+.lesson-section { margin-bottom: 2rem; }
+
+.lesson-section-label {
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.75rem; font-weight: 400;
+}
+
+.lesson-text {
+  font-size: 14px; line-height: 1.95;
+  color: rgba(201,185,154,0.72); font-weight: 300;
+}
+
+.lesson-list {
+  list-style: none; margin-top: 0.75rem;
+}
+
+.lesson-list li {
+  font-size: 13px; color: rgba(201,185,154,0.68);
+  padding: 0.6rem 0;
+  border-bottom: 0.5px solid rgba(184,149,42,0.08);
+  font-weight: 300; line-height: 1.5;
+}
+.lesson-list li::before {
+  content: '—';
+  color: var(--gold-dim);
+  margin-right: 10px;
+  font-family: 'Cormorant Garamond', serif;
+}
+.lesson-list li:last-child { border-bottom: none; }
+
+.lesson-pullquote {
+  border-left: 2px solid rgba(184,149,42,0.35);
+  padding: 0.6rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.lesson-pullquote p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; font-style: italic;
+  color: var(--sand); line-height: 1.55; font-weight: 300;
+}
+
+/* ── CHALLENGE ──────────────────────────────────────────────── */
+.challenge-wrap { padding: 2.5rem 2rem; }
+
+.challenge-header {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
+}
+
+.challenge-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300; color: var(--sand-light);
+}
+
+.challenge-stat { text-align: right; }
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px; color: var(--sand-light); display: block;
+}
+
+.stat-label { font-size: 11px; color: var(--muted); }
+
+.progress-bar {
+  height: 1.5px; background: rgba(184,149,42,0.12);
+  border-radius: 1px; margin-bottom: 2rem; overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%; background: var(--gold);
+  border-radius: 1px;
+  transition: width 0.5s ease;
+}
+
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.week-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: var(--r); overflow: hidden;
+}
+
+.week-head {
+  padding: 0.9rem 1.25rem;
+  border-bottom: 0.5px solid rgba(184,149,42,0.1);
+}
+
+.week-theme {
+  font-size: 9px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
+}
+
+.week-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; color: var(--sand);
+}
+
+.day-list { list-style: none; }
+
+.day-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 0.65rem 1.25rem;
+  border-bottom: 0.5px solid rgba(184,149,42,0.06);
+  cursor: pointer; transition: background 0.15s;
+}
+.day-item:last-child { border-bottom: none; }
+.day-item:hover { background: rgba(255,255,255,0.018); }
+
+.day-check {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 0.5px solid rgba(184,149,42,0.25);
+  flex-shrink: 0; display: flex;
+  align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.day-check.done {
+  background: rgba(184,149,42,0.12);
+  border-color: var(--gold);
+}
+.day-check.done::after {
+  content: '✓'; font-size: 9px; color: var(--gold);
+}
+
+.day-label { font-size: 12px; color: rgba(201,185,154,0.62); font-weight: 300; }
+.day-label strong {
+  font-size: 9px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+  display: block; font-weight: 400; margin-bottom: 1px;
+}
+
+/* ── JOURNAL ────────────────────────────────────────────────── */
+.journal-wrap {
+  padding: 2.5rem 2rem;
+  max-width: 680px;
+}
+
+.journal-head { margin-bottom: 0.5rem; }
+.journal-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300; color: var(--sand-light);
+}
+.journal-head p { font-size: 12px; color: var(--muted); font-weight: 300; margin-top: 4px; }
+
+.journal-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-style: italic;
+  color: rgba(184,149,42,0.45);
+  margin: 1.25rem 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.field-label {
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.5rem; display: block;
+}
+
+.mood-row { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+
+.mood-chip {
+  font-size: 11px; letter-spacing: 0.05em;
+  padding: 6px 13px; background: none;
+  border: 0.5px solid rgba(184,149,42,0.2);
+  border-radius: 2px; cursor: pointer;
+  color: var(--muted); font-family: 'Inter', sans-serif;
+  transition: all 0.15s;
+}
+.mood-chip:hover { border-color: rgba(184,149,42,0.4); color: var(--sand); }
+.mood-chip.on { background: rgba(184,149,42,0.1); border-color: var(--gold); color: var(--gold); }
+
+.energy-row { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+
+.energy-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 0.5px solid rgba(184,149,42,0.2);
+  background: none; cursor: pointer;
+  font-size: 11px; color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+}
+.energy-dot:hover { border-color: rgba(184,149,42,0.4); color: var(--sand); }
+.energy-dot.on { background: rgba(184,149,42,0.12); border-color: var(--gold); color: var(--gold); }
+
+.prompt-block { margin-bottom: 1.5rem; }
+
+.prompt-q {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-style: italic;
+  color: var(--sand); font-weight: 300;
+  line-height: 1.45; margin-bottom: 0.7rem;
+}
+
+.qs-textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.02);
+  border: 0.5px solid rgba(184,149,42,0.18);
+  border-radius: var(--r);
+  padding: 1rem;
+  color: rgba(201,185,154,0.85);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 300;
+  font-style: italic; line-height: 1.85;
+  resize: vertical; min-height: 90px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.qs-textarea::placeholder { color: rgba(138,127,112,0.35); }
+.qs-textarea:focus { border-color: rgba(184,149,42,0.4); }
+
+.save-row {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 0.5px solid var(--border);
+  flex-wrap: wrap; gap: 1rem;
+}
+
+.save-note { font-size: 11px; color: var(--muted); font-style: italic; }
+
+.save-confirm {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic;
+  color: var(--gold); text-align: center;
+  margin-top: 1rem;
+  opacity: 0; transition: opacity 0.4s;
+}
+.save-confirm.show { opacity: 1; }
+
+.identity-section {
+  margin-top: 2.5rem; padding-top: 2rem;
+  border-top: 0.5px solid var(--border);
+}
+
+.identity-line {
+  display: flex; align-items: center;
+  gap: 12px; margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.id-prefix {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic;
+  color: var(--muted); white-space: nowrap;
+  min-width: 175px;
+}
+
+.id-input {
+  flex: 1; min-width: 180px;
+  background: none; border: none;
+  border-bottom: 0.5px solid rgba(184,149,42,0.22);
+  padding: 4px 0;
+  color: var(--sand-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic;
+  outline: none; transition: border-color 0.2s;
+}
+.id-input::placeholder { color: rgba(138,127,112,0.28); }
+.id-input:focus { border-bottom-color: var(--gold); }
+
+/* ── AFFIRMATIONS ───────────────────────────────────────────── */
+.aff-wrap { padding: 2.5rem 2rem; }
+
+.aff-header {
+  display: flex; align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
+}
+
+.aff-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300; color: var(--sand-light);
+}
+
+.section-tabs { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 1.75rem; }
+
+.section-tab {
+  font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border: 0.5px solid rgba(184,149,42,0.18);
+  border-radius: 2px; cursor: pointer;
+  background: none; color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s;
+}
+.section-tab:hover { color: var(--sand); border-color: rgba(184,149,42,0.38); }
+.section-tab.active { background: rgba(184,149,42,0.1); border-color: var(--gold); color: var(--gold); }
+
+.card-display {
+  background: rgba(184,149,42,0.03);
+  border: 0.5px solid rgba(184,149,42,0.2);
+  border-radius: var(--r);
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+  max-width: 520px;
+  min-height: 220px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: opacity 0.25s;
+}
+
+.card-section {
+  font-size: 10px; letter-spacing: 0.24em;
+  text-transform: uppercase; color: rgba(184,149,42,0.45);
+  margin-bottom: 1.5rem;
+}
+
+.card-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 400; color: var(--sand-light);
+  line-height: 1.2; margin-bottom: 1rem;
+}
+
+.card-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic;
+  color: var(--muted); font-weight: 300; line-height: 1.55;
+}
+
+.card-num {
+  font-size: 10px; letter-spacing: 0.1em;
+  color: rgba(184,149,42,0.3); margin-top: 2rem;
+}
+
+.card-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+.ctrl-btn {
+  background: none;
+  border: 0.5px solid rgba(184,149,42,0.22);
+  border-radius: 2px; padding: 8px 20px;
+  color: var(--muted); font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; cursor: pointer;
+  transition: all 0.15s;
+}
+.ctrl-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── MOBILE ─────────────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .nav { padding: 0 1rem; }
+  .nav-brand { font-size: 11px; }
+  .nav-tab { font-size: 10px; padding: 6px 10px; }
+  .hero { padding: 3rem 1.25rem 2rem; }
+  .lessons-layout { grid-template-columns: 1fr; }
+  .lesson-sidebar {
+    position: static; height: auto;
+    border-right: none; border-bottom: 0.5px solid var(--border);
+    padding: 1rem 0;
+    display: flex; overflow-x: auto; gap: 0;
+  }
+  .lesson-btn { border-left: none; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .lesson-btn.active { border-left: none; border-bottom-color: var(--gold); }
+  .lesson-content { padding: 1.5rem 1.25rem; }
+  .challenge-wrap, .journal-wrap, .aff-wrap { padding: 1.5rem 1.25rem; }
+  .welcome-cards { padding: 1.25rem; }
+  .card-display { padding: 2rem 1.5rem; }
+  .identity-line { flex-direction: column; align-items: flex-start; }
+  .id-prefix { min-width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view { animation: none; }
+  .progress-fill { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <span class="nav-brand">The Soul's Compass Path</span>
+  <ul class="nav-tabs" role="tablist">
+    <li><button class="nav-tab active" role="tab" aria-selected="true"  onclick="showView('welcome',this)">Welcome</button></li>
+    <li><button class="nav-tab"        role="tab" aria-selected="false" onclick="showView('lessons',this)">Lessons</button></li>
+    <li><button class="nav-tab"        role="tab" aria-selected="false" onclick="showView('challenge',this)">30-Day Challenge</button></li>
+    <li><button class="nav-tab"        role="tab" aria-selected="false" onclick="showView('journal',this)">Daily Journal</button></li>
+    <li><button class="nav-tab"        role="tab" aria-selected="false" onclick="showView('affirmations',this)">Affirmations</button></li>
+  </ul>
+  <span class="nav-compass" aria-hidden="true">◈</span>
+</nav>
+
+<!-- ── WELCOME ─────────────────────────────────────────────── -->
+<section id="view-welcome" class="view active" role="tabpanel">
+  <div class="hero">
+    <span class="hero-eyebrow">The Quiet Strength Guide</span>
+    <h1 class="hero-title">Rebuild Your Confidence.<br><em>Protect Your Peace.</em></h1>
+    <div class="hero-rule" aria-hidden="true"></div>
+    <p class="hero-body">If you're here, you're tired — not just physically, but in a way that sleep doesn't fix. This is your space to return to yourself, gently and without apology.</p>
+    <button class="btn-primary" onclick="showView('lessons', document.querySelectorAll('.nav-tab')[1])">Begin the Journey</button>
+    <button class="btn-ghost"   onclick="showView('journal', document.querySelectorAll('.nav-tab')[3])">Open Today's Journal</button>
+
+    <div class="pledge-card" aria-label="The Quiet Strength Pledge">
+      <span class="pledge-label">The Quiet Strength Pledge</span>
+      <div class="pledge-line">I choose peace over performance.</div>
+      <div class="pledge-line">I choose boundaries without guilt.</div>
+      <div class="pledge-line">I choose rest without shame.</div>
+      <div class="pledge-line">I choose self-respect over self-abandonment.</div>
+      <div class="pledge-line">I trust myself.</div>
+    </div>
+  </div>
+
+  <div class="welcome-cards" role="list">
+    <div class="welcome-card" role="listitem" tabindex="0" onclick="showView('lessons', document.querySelectorAll('.nav-tab')[1])" onkeydown="if(event.key==='Enter')this.click()">
+      <div class="wc-label">5 Lessons</div>
+      <div class="wc-title">The Guide</div>
+      <div class="wc-desc">From emotional overload to quiet confidence — at your own pace.</div>
+    </div>
+    <div class="welcome-card" role="listitem" tabindex="0" onclick="showView('challenge', document.querySelectorAll('.nav-tab')[2])" onkeydown="if(event.key==='Enter')this.click()">
+      <div class="wc-label">30 Days</div>
+      <div class="wc-title">The Challenge</div>
+      <div class="wc-desc">5–15 minutes daily. No perfection required. Only progress.</div>
+    </div>
+    <div class="welcome-card" role="listitem" tabindex="0" onclick="showView('journal', document.querySelectorAll('.nav-tab')[3])" onkeydown="if(event.key==='Enter')this.click()">
+      <div class="wc-label">Daily Ritual</div>
+      <div class="wc-title">The Journal</div>
+      <div class="wc-desc">Morning check-in, intentions, energy tracking, and reflection prompts.</div>
+    </div>
+    <div class="welcome-card" role="listitem" tabindex="0" onclick="showView('affirmations', document.querySelectorAll('.nav-tab')[4])" onkeydown="if(event.key==='Enter')this.click()">
+      <div class="wc-label">52 Cards</div>
+      <div class="wc-title">Affirmations</div>
+      <div class="wc-desc">Peace, boundaries, self-worth, confidence, and healing cards.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LESSONS ─────────────────────────────────────────────── -->
+<section id="view-lessons" class="view" role="tabpanel">
+  <div class="lessons-layout">
+    <aside class="lesson-sidebar" aria-label="Lesson navigation">
+      <span class="sidebar-label">Five Lessons</span>
+      <button class="lesson-btn active" onclick="showLesson(0,this)"><span class="lesson-num">Lesson 01</span>The Hidden Cost of Being Too Available</button>
+      <button class="lesson-btn" onclick="showLesson(1,this)"><span class="lesson-num">Lesson 02</span>Stop Explaining. Start Protecting.</button>
+      <button class="lesson-btn" onclick="showLesson(2,this)"><span class="lesson-num">Lesson 03</span>Rebuilding Inner Calm</button>
+      <button class="lesson-btn" onclick="showLesson(3,this)"><span class="lesson-num">Lesson 04</span>Protect Your Energy Without Shutting Down</button>
+      <button class="lesson-btn" onclick="showLesson(4,this)"><span class="lesson-num">Lesson 05</span>The Quiet Confidence Blueprint</button>
+    </aside>
+    <main class="lesson-content" id="lesson-content" aria-live="polite"></main>
+  </div>
+</section>
+
+<!-- ── CHALLENGE ───────────────────────────────────────────── -->
+<section id="view-challenge" class="view" role="tabpanel">
+  <div class="challenge-wrap">
+    <div class="challenge-header">
+      <div>
+        <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;">30-Day Journey</p>
+        <h2>The Quiet Strength Challenge</h2>
+      </div>
+      <div class="challenge-stat">
+        <span class="stat-num" id="days-done">0</span>
+        <span class="stat-label">days complete</span>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="weeks-grid" id="weeks-grid"></div>
+  </div>
+</section>
+
+<!-- ── JOURNAL ─────────────────────────────────────────────── -->
+<section id="view-journal" class="view" role="tabpanel">
+  <div class="journal-wrap">
+    <div class="journal-head">
+      <h2>Daily Peace Journal</h2>
+      <p>A quiet space for emotional honesty.</p>
+    </div>
+    <div class="journal-date" id="journal-date"></div>
+
+    <div class="prompt-block">
+      <span class="field-label">How I feel today</span>
+      <div class="mood-row" id="mood-row" role="group" aria-label="Select your mood"></div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="field-label">My energy level — 1 to 10</span>
+      <div class="energy-row" id="energy-row" role="group" aria-label="Rate your energy"></div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="field-label">Today's intention</span>
+      <textarea class="qs-textarea" id="j-intention" placeholder="What do I want to feel or embody today?" rows="2" aria-label="Today's intention"></textarea>
+    </div>
+
+    <div class="prompt-block">
+      <span class="field-label">Morning reflection</span>
+      <p class="prompt-q" id="daily-prompt"></p>
+      <textarea class="qs-textarea" id="j-reflection" placeholder="Write freely. There is no wrong answer here..." rows="4" aria-label="Morning reflection"></textarea>
+    </div>
+
+    <div class="prompt-block">
+      <span class="field-label">What can I release today?</span>
+      <textarea class="qs-textarea" id="j-release" placeholder="What am I carrying that isn't mine?" rows="3" aria-label="What to release"></textarea>
+    </div>
+
+    <div class="prompt-block">
+      <span class="field-label">What matters most today?</span>
+      <textarea class="qs-textarea" id="j-priorities" placeholder="Name 1–3 things..." rows="2" aria-label="Priorities"></textarea>
+    </div>
+
+    <div class="save-row">
+      <span class="save-note">Your entries live in this session. Screenshot or copy to keep them.</span>
+      <button class="btn-primary" onclick="saveEntry()">Save Entry</button>
+    </div>
+    <div class="save-confirm" id="save-confirm" aria-live="polite">Entry saved. You showed up for yourself today. ◈</div>
+
+    <div class="identity-section">
+      <span class="field-label" style="margin-bottom:1.25rem;display:block;">Quiet Strength Identity Statement</span>
+      <div class="identity-line">
+        <span class="id-prefix">I am becoming someone who</span>
+        <input class="id-input" placeholder="..." aria-label="I am becoming someone who">
+      </div>
+      <div class="identity-line">
+        <span class="id-prefix">I no longer need to</span>
+        <input class="id-input" placeholder="..." aria-label="I no longer need to">
+      </div>
+      <div class="identity-line">
+        <span class="id-prefix">I deserve to</span>
+        <input class="id-input" placeholder="..." aria-label="I deserve to">
+      </div>
+      <div class="identity-line">
+        <span class="id-prefix">My peace matters because</span>
+        <input class="id-input" placeholder="..." aria-label="My peace matters because">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AFFIRMATIONS ────────────────────────────────────────── -->
+<section id="view-affirmations" class="view" role="tabpanel">
+  <div class="aff-wrap">
+    <div class="aff-header">
+      <div>
+        <p style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;">52 Healing Cards</p>
+        <h2>Affirmation Cards</h2>
+      </div>
+    </div>
+    <div class="section-tabs" id="section-tabs" role="group" aria-label="Filter by section"></div>
+    <div class="card-display" id="card-display" aria-live="polite" aria-label="Current affirmation card">
+      <div class="card-section" id="c-section"></div>
+      <div class="card-main"    id="c-main"></div>
+      <div class="card-sub"     id="c-sub"></div>
+      <div class="card-num"     id="c-num"></div>
+    </div>
+    <div class="card-controls">
+      <button class="ctrl-btn" onclick="prevCard()" aria-label="Previous card">← Previous</button>
+      <button class="ctrl-btn" onclick="shuffleCard()" aria-label="Shuffle cards">Shuffle</button>
+      <button class="ctrl-btn" onclick="nextCard()" aria-label="Next card">Next →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── JAVASCRIPT ──────────────────────────────────────────── -->
+<script>
+/* ── NAV ──────────────────────────────────────────────────── */
+function showView(name, btn) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected','false');
+  });
+  document.getElementById('view-' + name).classList.add('active');
+  if (btn) { btn.classList.add('active'); btn.setAttribute('aria-selected','true'); }
+
+  if (name === 'lessons')      { renderLesson(0); }
+  if (name === 'challenge')    { renderChallenge(); }
+  if (name === 'journal')      { renderJournal(); }
+  if (name === 'affirmations') { renderSectionTabs(); renderCard(); }
+}
+
+/* ── LESSONS ──────────────────────────────────────────────── */
+const LESSONS = [
+  {
+    eyebrow: 'Lesson One', num: '01',
+    title: 'The Hidden Cost of Being Too Available',
+    sub: 'Why you feel emotionally drained all the time',
+    sections: [
+      {
+        head: 'How emotional overload happens',
+        text: 'Emotional overload rarely happens all at once. It happens quietly — little by little. You answer one more phone call when you\'re already exhausted. You comfort people while ignoring your own emotions. You become the reliable one, the listener, the fixer, the emotionally strong one. And eventually your nervous system stops feeling safe.'
+      },
+      {
+        head: 'The difference between availability and self-abandonment',
+        text: 'Being caring is healthy. But constantly abandoning your own emotional needs to care for others creates burnout. Healthy emotional availability says: "I care about you." Emotional self-abandonment says: "Your emotions matter more than mine." That difference changes everything.'
+      },
+      {
+        head: '5 Signs you\'ve been absorbing other people\'s energy',
+        list: [
+          'You feel drained after being around certain people — headaches, emotional heaviness, exhaustion',
+          'You feel responsible for other people\'s feelings and try to "fix" everyone',
+          'You rarely ask yourself what you need — only what others need',
+          'Rest doesn\'t fully recharge you — emotional exhaustion doesn\'t lift with sleep',
+          'You\'ve become the strong one — suppressing your emotions to keep functioning'
+        ]
+      },
+      {
+        head: 'Key takeaway',
+        quote: 'Constant emotional availability without boundaries creates emotional exhaustion. You are not broken. You are overwhelmed. And there is a difference.'
+      }
+    ]
+  },
+  {
+    eyebrow: 'Lesson Two', num: '02',
+    title: 'How to Stop Explaining Yourself and Start Protecting Your Peace',
+    sub: 'Quiet strength vs. people pleasing',
+    sections: [
+      {
+        head: 'Kindness vs. self-abandonment',
+        text: 'Many people were taught that being "good" means always being available, always saying yes, never disappointing others. But there\'s a difference between being kind and disappearing emotionally to keep others comfortable. Self-abandonment happens when you consistently ignore your emotional needs to avoid discomfort, rejection, or conflict.'
+      },
+      {
+        head: 'Why over-explaining destroys confidence',
+        text: 'Over-explaining often comes from fear — fear of being misunderstood, seeming selfish, or losing approval. But what over-explaining quietly communicates is: my needs are not enough on their own. A respectful answer does not require a long defense. You are allowed to make decisions without writing an emotional essay about them.'
+      },
+      {
+        head: 'Three calm boundary phrases',
+        list: [
+          '"I\'m not available for that right now." — calm, direct, requires no explanation',
+          '"I need some time to recharge." — normalizes rest, honors your emotional needs',
+          '"That doesn\'t work for me." — respectful, firm, avoids unnecessary debate'
+        ]
+      },
+      {
+        head: 'Key takeaway',
+        quote: 'Protecting your peace does not make you selfish. It makes you emotionally responsible. And every calm boundary you practice helps rebuild the confidence you lost while constantly trying to keep everyone else comfortable.'
+      }
+    ]
+  },
+  {
+    eyebrow: 'Lesson Three', num: '03',
+    title: 'Rebuilding Inner Calm in 10 Minutes a Day',
+    sub: 'A simple emotional reset routine',
+    sections: [
+      {
+        head: 'Why your nervous system feels exhausted',
+        text: 'When you spend long periods stressed, emotionally available, or overstimulated, your nervous system begins to operate in survival mode. This can look like constant overthinking, emotional irritability, difficulty relaxing, shallow breathing, or trouble sleeping. Many people think they just need to be stronger. But what they actually need is emotional recovery.'
+      },
+      {
+        head: 'The 5-step Quiet Reset Ritual',
+        list: [
+          'Step 1 — Pause the Noise (2 min): Phone down. No fixing. One slow breath in, one slow breath out.',
+          'Step 2 — Ground Your Body (2 min): Feet flat. Notice the chair, air, clothing. Breathe 4 in, 6 out.',
+          'Step 3 — Emotional Check-In (2 min): Ask what you\'re feeling. Name it without judging it.',
+          'Step 4 — Release What Isn\'t Yours (2 min): Identify emotional weight that doesn\'t belong to you. Set it down.',
+          'Step 5 — Return to Yourself (2 min): Hand over heart. "I deserve peace too. I deserve rest too."'
+        ]
+      },
+      {
+        head: 'Why small daily calm matters more than occasional escape',
+        text: 'Many people only rest when they completely break down. But emotional wellness is built through small moments of emotional regulation repeated consistently. 10 calm minutes daily can begin changing your stress levels, your nervous system, your sleep, and your relationship with yourself — not overnight, but gradually and safely.'
+      },
+      {
+        head: 'Key takeaway',
+        quote: 'Calm is not something you wait for. It is something you practice returning to. Every time you pause instead of pushing yourself past exhaustion, you rebuild trust with yourself.'
+      }
+    ]
+  },
+  {
+    eyebrow: 'Lesson Four', num: '04',
+    title: 'How to Protect Your Energy Without Shutting Down',
+    sub: 'Becoming emotionally unshakeable',
+    sections: [
+      {
+        head: 'How emotionally grounded people think differently',
+        list: [
+          '"I can care without carrying." — compassion without taking ownership of others\' emotions',
+          '"Their emotions belong to them." — releasing responsibility for how others feel',
+          '"I can pause before reacting." — space between stimulus and response',
+          '"Not every situation deserves my emotional energy." — discernment, not avoidance',
+          '"Protecting my peace is healthy." — self-care as emotional responsibility'
+        ]
+      },
+      {
+        head: 'What healthy detachment actually looks like',
+        text: 'Healthy detachment is not emotional abandonment — it is emotional separation. It means: "I can care about you without emotionally drowning beside you." You can support people without carrying them, listen without absorbing, love without losing yourself, and remain calm without feeling guilty.'
+      },
+      {
+        head: 'Four grounding techniques',
+        list: [
+          'The Pause Response — before engaging emotionally, pause, breathe, and ask if it\'s necessary',
+          'Physical Grounding — feet flat, jaw unclenched, shoulders dropped, slow exhale',
+          'Emotional Separation — ask "Is this emotion mine, or am I absorbing someone else\'s state?"',
+          'Internal Reassurance — say "I am safe. I can stay calm. Protecting my peace is healthy."'
+        ]
+      },
+      {
+        head: 'Key takeaway',
+        quote: 'The goal is not emotional walls. The goal is emotional wisdom. Walls say: no one gets close. Wisdom says: not everything deserves access to me.'
+      }
+    ]
+  },
+  {
+    eyebrow: 'Lesson Five', num: '05',
+    title: 'The Quiet Confidence Blueprint',
+    sub: 'How to walk into any room without losing yourself',
+    sections: [
+      {
+        head: 'Understanding quiet self-worth',
+        text: 'Many people spend years chasing confidence externally — through praise, achievement, or approval. But external validation is unstable. If your confidence depends entirely on outside approval, it will rise and fall based on how others respond to you. Quiet self-worth says: "I still value myself even when I am not being praised."'
+      },
+      {
+        head: 'Habits of calm, confident communicators',
+        list: [
+          'They pause before speaking — not from anxiety, but from self-control',
+          'They speak clearly instead of excessively — "That works best for me," not a paragraph of justification',
+          'They stop seeking permission to exist comfortably — no apology for taking up space',
+          'They trust themselves more than they seek reassurance from others'
+        ]
+      },
+      {
+        head: 'Signs you are becoming more emotionally aligned',
+        list: [
+          'You stop forcing connections that drain you',
+          'You feel calmer saying no — guilt decreases over time',
+          'You trust yourself more and seek reassurance less',
+          'You stop performing for validation',
+          'You feel at home in yourself regardless of who is around'
+        ]
+      },
+      {
+        head: 'Key takeaway',
+        quote: 'Confidence is not becoming someone else. It is returning to yourself without fear. You do not need to become louder, harder, or colder to be strong. Quiet confidence is powerful precisely because it is grounded.'
+      }
+    ]
+  }
+];
+
+function renderLesson(idx) {
+  const l = LESSONS[idx];
+  let html = `
+    <p class="lesson-eyebrow">${l.eyebrow}</p>
+    <h2 class="lesson-title">${l.title}</h2>
+    <p class="lesson-subtitle">${l.sub}</p>
+    <div class="lesson-rule"></div>
+  `;
+  l.sections.forEach(s => {
+    html += `<div class="lesson-section"><p class="lesson-section-label">${s.head}</p>`;
+    if (s.text) html += `<p class="lesson-text">${s.text}</p>`;
+    if (s.list) html += `<ul class="lesson-list">${s.list.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    if (s.quote) html += `<div class="lesson-pullquote"><p>${s.quote}</p></div>`;
+    html += `</div>`;
+  });
+  document.getElementById('lesson-content').innerHTML = html;
+}
+
+function showLesson(idx, btn) {
+  document.querySelectorAll('.lesson-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderLesson(idx);
+  document.getElementById('lesson-content').scrollTop = 0;
+}
+
+renderLesson(0);
+
+/* ── CHALLENGE ────────────────────────────────────────────── */
+const WEEKS = [
+  { theme: 'Week 1 · Awareness', title: 'Understanding What\'s Draining You', days: [
+    {n:1, l:'The Energy Audit'}, {n:2, l:'Notice Your Inner Dialogue'},
+    {n:3, l:'Unplug for 30 Minutes'}, {n:4, l:'Name Your Emotions'},
+    {n:5, l:'Identify Your Top 3 Energy Leaks'}, {n:6, l:'Rest Without Earning It'},
+    {n:7, l:'Weekly Reflection'}
+  ]},
+  { theme: 'Week 2 · Boundaries', title: 'Protecting Your Peace', days: [
+    {n:8, l:'Practice Saying No'}, {n:9, l:'Notice Where You Over-Explain'},
+    {n:10, l:'Create Space'}, {n:11, l:'Release Responsibility'},
+    {n:12, l:'Practice a Boundary Statement'}, {n:13, l:'Protect Your Time'},
+    {n:14, l:'Weekly Reflection'}
+  ]},
+  { theme: 'Week 3 · Inner Calm', title: 'Reconnecting With Yourself', days: [
+    {n:15, l:'The Quiet Reset Ritual'}, {n:16, l:'Mindful Breathing'},
+    {n:17, l:'Create a Peace Playlist'}, {n:18, l:'Take a Slow Walk'},
+    {n:19, l:'Create a Comfort List'}, {n:20, l:'Spend Time in Silence'},
+    {n:21, l:'Weekly Reflection'}
+  ]},
+  { theme: 'Week 4 · Quiet Confidence', title: 'Becoming Emotionally Unshakeable', days: [
+    {n:22, l:'Celebrate One Strength'}, {n:23, l:'Stop Seeking Permission'},
+    {n:24, l:'Speak Kindly to Yourself'}, {n:25, l:'Practice Calm Confidence'},
+    {n:26, l:'Let Go of Comparison'}, {n:27, l:'Choose Peace Over Perfection'},
+    {n:28, l:'Your Identity Statement'}, {n:29, l:'Forgive Yourself'},
+    {n:30, l:'The Quiet Strength Ceremony'}
+  ]}
+];
+
+let done = new Set();
+
+function renderChallenge() {
+  const grid = document.getElementById('weeks-grid');
+  grid.innerHTML = '';
+  WEEKS.forEach(w => {
+    const card = document.createElement('div');
+    card.className = 'week-card';
+    card.innerHTML = `
+      <div class="week-head">
+        <div class="week-theme">${w.theme}</div>
+        <div class="week-title">${w.title}</div>
+      </div>
+      <ul class="day-list">
+        ${w.days.map(d => `
+          <li class="day-item" onclick="toggleDay(${d.n})" role="checkbox" aria-checked="${done.has(d.n)}" tabindex="0" onkeydown="if(event.key===' ')toggleDay(${d.n})">
+            <div class="day-check${done.has(d.n)?' done':''}" id="chk-${d.n}"></div>
+            <div class="day-label"><strong>Day ${d.n}</strong>${d.l}</div>
+          </li>`).join('')}
+      </ul>`;
+    grid.appendChild(card);
+  });
+  updateProgress();
+}
+
+function toggleDay(n) {
+  done.has(n) ? done.delete(n) : done.add(n);
+  const el = document.getElementById('chk-'+n);
+  if (el) el.className = 'day-check' + (done.has(n) ? ' done' : '');
+  updateProgress();
+}
+
+function updateProgress() {
+  const pct = Math.round(done.size / 30 * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('days-done').textContent = done.size;
+}
+
+/* ── JOURNAL ──────────────────────────────────────────────── */
+const MOODS   = ['Calm','Grateful','Tired','Anxious','Overwhelmed','Hopeful','Heavy','Peaceful','Numb','Hopeful'];
+const PROMPTS = [
+  'What leaves me feeling most exhausted — and have I ever asked myself why?',
+  'Would I speak to someone I love the way I\'ve been speaking to myself?',
+  'What am I carrying right now that was never mine to carry?',
+  'Where in my life am I abandoning myself to keep others comfortable?',
+  'What would feel different if I actually believed my needs mattered?',
+  'What do I need most right now that I keep denying myself?',
+  'What truth do I need to remember today?',
+  'Where do I need to give myself more compassion this week?'
+];
+
+function renderJournal() {
+  const d = new Date();
+  document.getElementById('journal-date').textContent =
+    d.toLocaleDateString('en-US', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+
+  document.getElementById('daily-prompt').textContent =
+    PROMPTS[d.getDay() % PROMPTS.length];
+
+  const moodRow = document.getElementById('mood-row');
+  moodRow.innerHTML = [...new Set(MOODS)].map(m =>
+    `<button class="mood-chip" onclick="this.classList.toggle('on')" aria-pressed="false">${m}</button>`
+  ).join('');
+
+  const eRow = document.getElementById('energy-row');
+  eRow.innerHTML = Array.from({length:10},(_,i) =>
+    `<button class="energy-dot" onclick="setEnergy(${i+1},this)" aria-label="Energy level ${i+1}">${i+1}</button>`
+  ).join('');
+}
+
+function setEnergy(n) {
+  document.querySelectorAll('.energy-dot').forEach((d,i) => {
+    d.classList.toggle('on', i < n);
+    d.setAttribute('aria-pressed', i < n ? 'true' : 'false');
+  });
+}
+
+function saveEntry() {
+  const el = document.getElementById('save-confirm');
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+/* ── AFFIRMATIONS ─────────────────────────────────────────── */
+const CARDS = [
+  {s:'Peace',      m:'My peace is sacred.',                         b:'I no longer apologize for protecting what brings me calm.'},
+  {s:'Peace',      m:'Rest is not something I must earn.',          b:'I deserve moments of stillness and restoration.'},
+  {s:'Peace',      m:'I release what was never mine to carry.',     b:'I can love deeply without carrying everyone else\'s burdens.'},
+  {s:'Peace',      m:'Not every battle deserves my energy.',        b:'I choose peace over proving myself.'},
+  {s:'Peace',      m:'It is safe to slow down.',                    b:'I do not need to live in survival mode.'},
+  {s:'Peace',      m:'Stillness is not emptiness.',                 b:'It is where I find myself again.'},
+  {s:'Peace',      m:'My calm is not dependent on others.',         b:'I can find peace even in the middle of uncertainty.'},
+  {s:'Boundaries', m:'No is a complete sentence.',                  b:'I do not owe long explanations for protecting my peace.'},
+  {s:'Boundaries', m:'My needs matter too.',                        b:'Caring for myself is not selfish.'},
+  {s:'Boundaries', m:'I can care without carrying.',                b:'Love does not require emotional exhaustion.'},
+  {s:'Boundaries', m:'Boundaries protect relationships.',           b:'Healthy distance creates healthy connections.'},
+  {s:'Boundaries', m:'I am allowed to disappoint people.',          b:'I refuse to abandon myself to avoid discomfort.'},
+  {s:'Boundaries', m:'I protect my time.',                          b:'My energy is a resource worth guarding.'},
+  {s:'Boundaries', m:'I release what was never my responsibility.', b:'Their emotions belong to them, not to me.'},
+  {s:'Self-Worth', m:'I do not need permission to take up space.',  b:'I deserve to be seen, heard, and respected.'},
+  {s:'Self-Worth', m:'My worth is not earned through overgiving.',  b:'I am valuable simply because I exist.'},
+  {s:'Self-Worth', m:'I trust myself.',                             b:'I no longer need constant reassurance from others.'},
+  {s:'Self-Worth', m:'I release comparison.',                       b:'My journey belongs to me.'},
+  {s:'Self-Worth', m:'I choose self-respect over self-abandonment.',b:'Peace begins with honoring myself.'},
+  {s:'Self-Worth', m:'I do not shrink to make others comfortable.', b:'I take up the space I was meant to occupy.'},
+  {s:'Self-Worth', m:'My feelings are valid.',                      b:'I do not need to justify or explain them.'},
+  {s:'Confidence', m:'I do not lose my value when unrecognized.',   b:'My worth exists independently of outside approval.'},
+  {s:'Confidence', m:'I can walk into any room without losing myself.',b:'My calm is my power.'},
+  {s:'Confidence', m:'I speak clearly without over-explaining.',    b:'A respectful answer does not need a long defense.'},
+  {s:'Confidence', m:'I am becoming more grounded every day.',      b:'Quiet strength is built in small, consistent moments.'},
+  {s:'Confidence', m:'My silence is not weakness.',                 b:'Sometimes the most powerful response is a peaceful pause.'},
+  {s:'Confidence', m:'I pause before I react.',                     b:'That pause is my power.'},
+  {s:'Confidence', m:'I no longer perform for approval.',           b:'My presence is enough.'},
+  {s:'Healing',    m:'I forgive myself for surviving the only way I knew how.',b:'I release guilt for every moment I didn\'t know better.'},
+  {s:'Healing',    m:'I am not broken. I am overwhelmed.',          b:'And there is a difference.'},
+  {s:'Healing',    m:'Healing happens in quiet moments.',           b:'Not just in the dramatic ones.'},
+  {s:'Healing',    m:'I am allowed to take up emotional space.',    b:'My feelings are valid and worth honoring.'},
+  {s:'Healing',    m:'I choose quiet strength.',                    b:'Every day, I remember who I was before I learned to abandon myself.'},
+  {s:'Healing',    m:'I am gentle with myself.',                    b:'I am doing the best I can with what I have.'},
+  {s:'Healing',    m:'I honor my own emotional journey.',           b:'No comparison. No timeline. Just mine.'}
+];
+
+const SECTIONS = ['All','Peace','Boundaries','Self-Worth','Confidence','Healing'];
+let currentSection = 'All';
+let cardIdx = 0;
+
+function filtered() {
+  return currentSection === 'All' ? CARDS : CARDS.filter(c => c.s === currentSection);
+}
+
+function renderCard() {
+  const cards = filtered();
+  if (!cards.length) return;
+  cardIdx = Math.min(cardIdx, cards.length - 1);
+  const c = cards[cardIdx];
+  document.getElementById('c-section').textContent = c.s;
+  document.getElementById('c-main').textContent    = c.m;
+  document.getElementById('c-sub').textContent     = c.b;
+  document.getElementById('c-num').textContent     = `Card ${cardIdx + 1} of ${cards.length}`;
+}
+
+function nextCard()    { const c = filtered(); cardIdx = (cardIdx + 1) % c.length; renderCard(); }
+function prevCard()    { const c = filtered(); cardIdx = (cardIdx - 1 + c.length) % c.length; renderCard(); }
+function shuffleCard() { const c = filtered(); cardIdx = Math.floor(Math.random() * c.length); renderCard(); }
+
+function renderSectionTabs() {
+  document.getElementById('section-tabs').innerHTML = SECTIONS.map(s =>
+    `<button class="section-tab${s===currentSection?' active':''}"
+      onclick="filterSection('${s}',this)"
+      aria-pressed="${s===currentSection}">${s}</button>`
+  ).join('');
+}
+
+function filterSection(s, btn) {
+  currentSection = s; cardIdx = 0;
+  document.querySelectorAll('.section-tab').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+  btn.classList.add('active'); btn.setAttribute('aria-pressed','true');
+  renderCard();
+}
+</script>
+</body>
+</html>
